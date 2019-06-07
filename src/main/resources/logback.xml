@@ -2,7 +2,6 @@
 <configuration scan="true" debug="false">
 
     <property name="log.base" value="/home/GR/Logs"/>
-    <!--<property name="log.base" value="home/GR/Logs"/>-->
     <property name="log.error" value="error"/>
     <property name="app.name" value="gr-unicorn-metrics"/>
 

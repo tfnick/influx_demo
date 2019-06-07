@@ -1,7 +1,6 @@
-package com.gr.sys.service;
+package com.gr.sys;
 
 import org.apache.commons.lang3.time.DateFormatUtils;
-import org.apache.commons.lang3.time.DateUtils;
 
 import java.util.Date;
 
@@ -20,7 +19,7 @@ public class DateTest {
 
         time = time / 1000000;
 
-        return DateFormatUtils.format(new Date(time),"yyyy-MM-dd HH:mm:ss");
+        return DateFormatUtils.format(new Date(time), "yyyy-MM-dd HH:mm:ss");
 
     }
 }

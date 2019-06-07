@@ -1,4 +1,4 @@
-package com.gr.sys.service;
+package com.gr.sys;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang3.RandomUtils;
@@ -7,7 +7,7 @@ import org.apache.commons.lang3.time.DateUtils;
 import java.io.File;
 import java.util.*;
 
-public class InitDb {
+public class MockLineProtocalData {
     static String format = "yyyy-MM-dd HH:mm:ss";
 
     /**

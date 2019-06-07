@@ -9,5 +9,8 @@
         <module name="influx-demo" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="influx-demo" target="1.8" />
+    </bytecodeTargetLevel>
   </component>
 </project>

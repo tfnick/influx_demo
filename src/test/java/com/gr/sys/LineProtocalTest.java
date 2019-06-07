@@ -1,7 +1,7 @@
 package com.gr.sys;
 
-import com.gr.sys.contoller.DailyFileSyncTaskMetric;
-import com.gr.sys.contoller.PbocQueryTaskMetric;
+import com.gr.sys.contoller.EventDailyFileSync;
+import com.gr.sys.contoller.MetricRunningTask;
 import org.junit.Test;
 
 import java.util.Date;
@@ -10,19 +10,19 @@ public class LineProtocalTest {
 
     @Test
     public void testPboc(){
-        PbocQueryTaskMetric pboc = new PbocQueryTaskMetric();
+        MetricRunningTask pboc = new MetricRunningTask();
 
         pboc.setTime(new Date());
-        pboc.setRunning_tasks(10);
+        pboc.setPboc_num(10);
 
         System.out.println(pboc.toLineProtocol());
     }
 
-    //DailyFileSyncTaskMetric
+    //EventDailyFileSync
 
     @Test
     public void testDaily(){
-        DailyFileSyncTaskMetric daily = new DailyFileSyncTaskMetric();
+        EventDailyFileSync daily = new EventDailyFileSync();
 
         daily.setTime(new Date());
         daily.setError_file_name(null);
