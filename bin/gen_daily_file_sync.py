@@ -6,8 +6,8 @@ from help import HelpUtil
 # 模拟生成日终任务执行状态日志，日志符合influxdb line-protocal format
 def emit(time_list):
 
-    _task_name = ['zy_daily','zhonghui_daily']
-    _task_status = ['1','2','3']
+    _task_name = ['zy_daily_sync','zhonghui_daily_sync']
+    _task_status = ['0','1','2']
 
     for item in time_list:
         
@@ -21,7 +21,7 @@ def emit(time_list):
             etime=item
         )
 
-        HelpUtil.append("/Users/nick/Documents/SOURCES/influx_demo/bin","m_daily_file_sync.log",line)
+        HelpUtil.append("/home/GR/Logs/gr_app","m_daily_file_sync.log",line)
 
 if __name__ == '__main__':
     #时间区间
@@ -31,7 +31,7 @@ if __name__ == '__main__':
     start_hour = 0
     end_hour = 23
     #模拟多少条数据
-    num_emit = 10
+    num_emit = 1
 
     time_list = HelpUtil.random_sort_time_series(year,month,day,start_hour,end_hour,num_emit)
     

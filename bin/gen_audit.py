@@ -29,7 +29,7 @@ def emit(time_list):
             etime=item
         )
 
-        HelpUtil.append("/Users/nick/Documents/SOURCES/influx_demo/bin","m_aduit.log",line)
+        HelpUtil.append("/home/GR/Logs/gr_biz","m_aduit.log",line)
 
 if __name__ == '__main__':
     #时间区间
@@ -39,7 +39,7 @@ if __name__ == '__main__':
     start_hour = 0
     end_hour = 23
     #模拟多少条数据
-    num_emit = 10
+    num_emit = 1000
 
     time_list = HelpUtil.random_sort_time_series(year,month,day,start_hour,end_hour,num_emit)
     
