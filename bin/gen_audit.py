@@ -29,7 +29,7 @@ def emit(time_list):
             etime=item
         )
 
-        HelpUtil.append("/home/GR/Logs/gr_biz","m_aduit.log",line)
+        HelpUtil.append("/home/GR/Logs/gr_biz","m_audit.log",line)
 
 if __name__ == '__main__':
     #时间区间
