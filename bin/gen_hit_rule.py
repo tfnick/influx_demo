@@ -34,9 +34,9 @@ if __name__ == '__main__':
     #时间区间
     year = 2019
     month = 6
-    day = 5
+    day = 8
     start_hour = 0
-    end_hour = 23
+    end_hour = 15 #max = 23
     #模拟多少条数据
     num_emit = 1000
 

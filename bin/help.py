@@ -21,7 +21,7 @@ class HelpUtil:
 
             t = time.mktime((year, month, day, hour, minute, second, 0, 0, 0))
             #stamp = '%d' % (t * 1000000)
-            stamp = t * 1000000
+            stamp = t * 1000 * 1000000
 
 
             list.append(int(stamp))
