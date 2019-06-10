@@ -14,17 +14,17 @@ def emit(time_list):
 
     for item in time_list:
         
-        tmp_line = Template("m_http_service,cid=${cid},invoker=${invoker},url=${url} gid=\"${gid}\",rt=${rt},code=\"${code}\",http_sts=\"${http_sts}\" ${etime}")
+        tmp_line = Template("m_http_service,cid=${cid},invoker=${invoker},url=${url},code=${code},http_sts=${http_sts} gid=\"${gid}\",rt=${rt} ${etime}")
         
         line = tmp_line.substitute(
             cid = 1,
             invoker=HelpUtil.random_choose_one(_invoker),
             url = HelpUtil.random_choose_one(_url),
+            code=HelpUtil.random_choose_one(_code),
+            http_sts=HelpUtil.random_choose_one(_http_sts),
 
             gid=uuid.uuid1(),
             rt=HelpUtil.range_random_choose_one(200,5000),
-            code=HelpUtil.random_choose_one(_code),
-            http_sts=HelpUtil.random_choose_one(_http_sts),
 
             etime=item
         )

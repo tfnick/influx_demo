@@ -13,17 +13,18 @@ def emit(time_list):
 
     for item in time_list:
         
-        tmp_line = Template("m_draw_notify,cid=${cid},prod_code=${prod_code} seq_num=\"${seq_num}\",uid=\"${uid}\",real_money=${real_money},draw_sts=\"${draw_sts}\" ${etime}")
+        tmp_line = Template("m_draw_notify,cid=${cid},prod_code=${prod_code},draw_sts=${draw_sts} seq_num=\"${seq_num}\",uid=\"${uid}\",real_money=${real_money} ${etime}")
         
         line = tmp_line.substitute(
             cid = 1,
             prod_code='p1',
             etype = HelpUtil.random_choose_one(_etype),
+            draw_sts=HelpUtil.random_choose_one(_draw_sts),
 
             seq_num = uuid.uuid1(),
             uid=uuid.uuid1(),
             real_money=HelpUtil.random_choose_one(_real_money),
-            draw_sts=HelpUtil.random_choose_one(_draw_sts),
+            
 
             etime=item
         )
