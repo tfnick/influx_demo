@@ -41,7 +41,8 @@ class HelpUtil:
         size = len(list)
         if size == 0:
             return None
-        return list[random.randint(0,size - 1)]
+        x = list[random.randint(0,size - 1)]
+        return x
 
     # 在一个整数区间内选择一个值
     @staticmethod

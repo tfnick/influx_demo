@@ -13,18 +13,24 @@ def emit(time_list):
 
     for item in time_list:
         
-        tmp_line = Template("m_draw_notify,cid=${cid},prod_code=${prod_code},draw_sts=${draw_sts} seq_num=\"${seq_num}\",uid=\"${uid}\",real_money=${real_money} ${etime}")
+        tmp_line = Template("m_draw_notify,cid=${cid},prod_code=${prod_code},draw_sts=${draw_sts} seq_num=\"${seq_num}\",uid=\"${uid}\",real_money=${real_money},accept=${accpet},num=1 ${etime}")
         
+        ##???[0]
+        draw_sts_=HelpUtil.random_choose_one(_draw_sts),
+
+        accept_ = 0
+        if(draw_sts_[0]=='01'):
+            accept_ = 1
         line = tmp_line.substitute(
             cid = 1,
             prod_code='p1',
             etype = HelpUtil.random_choose_one(_etype),
-            draw_sts=HelpUtil.random_choose_one(_draw_sts),
+            draw_sts=draw_sts_[0],
 
             seq_num = uuid.uuid1(),
             uid=uuid.uuid1(),
             real_money=HelpUtil.random_choose_one(_real_money),
-            
+            accpet = accept_,
 
             etime=item
         )
@@ -35,11 +41,11 @@ if __name__ == '__main__':
     #时间区间
     year = 2019
     month = 6
-    day = 10
+    day = 11
     start_hour = 0
     end_hour = 23 #max = 23
     #模拟多少条数据
-    num_emit = 1000
+    num_emit = 1
 
     time_list = HelpUtil.random_sort_time_series(year,month,day,start_hour,end_hour,num_emit)
     

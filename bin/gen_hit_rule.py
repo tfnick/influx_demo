@@ -35,11 +35,11 @@ if __name__ == '__main__':
     #时间区间
     year = 2019
     month = 6
-    day = 10
+    day = 11
     start_hour = 0
     end_hour = 23 #max = 23
     #模拟多少条数据
-    num_emit = 1000
+    num_emit = 1
 
     time_list = HelpUtil.random_sort_time_series(year,month,day,start_hour,end_hour,num_emit)
     
