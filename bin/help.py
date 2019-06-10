@@ -7,25 +7,29 @@ import random
 
 class HelpUtil:
 
-    # 随机生成指定区间的有序时间戳
+    # 随机生成指定区间的有序时间戳,当num=1时，忽略传入的时间参数，直接使用系统当前时间
     # start_hour, end_hour [0,23] 
     @staticmethod
     def random_sort_time_series(year,month,day,start_hour,end_hour,num):
         
         list = []
 
-        for i in range(num):
-            hour = random.randint(start_hour, end_hour)
-            
-            minute = random.randint(0, 59)
-            second = random.randint(0, 59)
-
-            t = time.mktime((year, month, day, hour, minute, second, 0, 0, 0))
-            #stamp = '%d' % (t * 1000000)
+        if num == 1:
+            t = time.time()
             stamp = t * 1000 * 1000000
-
-
             list.append(int(stamp))
+        else:
+            for i in range(num):
+                hour = random.randint(start_hour, end_hour)
+                
+                minute = random.randint(0, 59)
+                second = random.randint(0, 59)
+
+                t = time.mktime((year, month, day, hour, minute, second, 0, 0, 0))
+                #stamp = '%d' % (t * 1000000)
+                stamp = t * 1000 * 1000000
+
+                list.append(int(stamp))
 
 
         list.sort()
