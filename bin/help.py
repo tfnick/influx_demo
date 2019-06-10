@@ -11,11 +11,12 @@ class HelpUtil:
     # start_hour, end_hour [0,23] 
     @staticmethod
     def random_sort_time_series(year,month,day,start_hour,end_hour,num):
-        hour = random.randint(start_hour, end_hour)
-
+        
         list = []
 
         for i in range(num):
+            hour = random.randint(start_hour, end_hour)
+            
             minute = random.randint(0, 59)
             second = random.randint(0, 59)
 
