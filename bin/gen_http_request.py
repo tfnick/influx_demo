@@ -14,7 +14,7 @@ def emit(time_list):
 
     for item in time_list:
         
-        tmp_line = Template("m_http_service,cid=${cid},invoker=${invoker},url=${url} gid=\"${gid}\",rt=${rt},code=${code},http_sts=\"${http_sts}\" ${etime}")
+        tmp_line = Template("m_http_service,cid=${cid},invoker=${invoker},url=${url} gid=\"${gid}\",rt=${rt},code=\"${code}\",http_sts=\"${http_sts}\" ${etime}")
         
         line = tmp_line.substitute(
             cid = 1,
