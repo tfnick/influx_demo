@@ -14,7 +14,7 @@ def emit(time_list):
 
     for item in time_list:
         
-        tmp_line = Template("m_rule_hit,cid=${cid},prod_code=${prod_code},etype=${etype},seq_num=${seq_num} rule_set=\"${rule_set}\",rule=\"${rule}\" ${etime}")
+        tmp_line = Template("m_rule_hit,cid=${cid},prod_code=${prod_code},etype=${etype},seq_num=${seq_num} rule_set=\"${rule_set}\",rule=\"${rule}\",hit=${hit} ${etime}")
         
         line = tmp_line.substitute(
             cid = 1,
@@ -22,8 +22,9 @@ def emit(time_list):
             etype = HelpUtil.random_choose_one(_etype),
             seq_num = uuid.uuid1(),
 
-            rule_set=HelpUtil.random_choose_one(_rule_set),
-            rule=HelpUtil.random_choose_one(_rule),
+            rule_set = HelpUtil.random_choose_one(_rule_set),
+            rule = HelpUtil.random_choose_one(_rule),
+            hit = 1,
 
             etime=item
         )

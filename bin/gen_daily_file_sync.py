@@ -11,11 +11,13 @@ def emit(time_list):
 
     for item in time_list:
         
-        tmp_line = Template("m_daily_file_sync,task_name=${task_name} task_status=\"${task_status}\",file_num=${file_num},error_file_name=\"${error_file_name}\" ${etime}")
+        tmp_line = Template("m_daily_file_sync,task_name=${task_name} task_status=\"${task_status}\",rt=${rt},file_num=${file_num},error_file_name=\"${error_file_name}\" ${etime}")
         
         line = tmp_line.substitute(
             task_name = HelpUtil.random_choose_one(_task_name),
+
             task_status = HelpUtil.random_choose_one(_task_status),
+            rt = HelpUtil.range_random_choose_one(200,1000000),
             file_num=5,
             error_file_name='zyxx104_20190605.dat',
             etime=item
@@ -27,9 +29,9 @@ if __name__ == '__main__':
     #时间区间
     year = 2019
     month = 6
-    day = 5
+    day = 8
     start_hour = 0
-    end_hour = 23
+    end_hour = 15 #max = 23
     #模拟多少条数据
     num_emit = 1
 
