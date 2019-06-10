@@ -14,7 +14,7 @@ def emit(time_list):
 
     for item in time_list:
         
-        tmp_line = Template("m_http_service,cid=${cid},invoker=${invoker},url=${url} gid=\"${gid}\",rt=${rt},code=\"${code}\",http_sts=\"${http_sts}\" ${etime}")
+        tmp_line = Template("m_http_service,cid=${cid},invoker=${invoker},url=${url} gid=\"${gid}\",rt=${rt},code=${code},http_sts=\"${http_sts}\" ${etime}")
         
         line = tmp_line.substitute(
             cid = 1,
@@ -35,9 +35,9 @@ if __name__ == '__main__':
     #时间区间
     year = 2019
     month = 6
-    day = 8
+    day = 10
     start_hour = 0
-    end_hour = 15 #max = 23
+    end_hour = 23 #max = 23
     #模拟多少条数据
     num_emit = 1000
 
