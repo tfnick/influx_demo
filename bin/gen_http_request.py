@@ -14,8 +14,15 @@ def emit(time_list):
 
     for item in time_list:
         
-        tmp_line = Template("m_http_service,cid=${cid},invoker=${invoker},url=${url},code=${code},http_sts=${http_sts} gid=\"${gid}\",rt=${rt} ${etime}")
+        tmp_line = Template("m_http_service,cid=${cid},invoker=${invoker},url=${url},code=${code},http_sts=${http_sts} gid=\"${gid}\",rt=${rt},tout=${tout} ${etime}")
         
+        st = HelpUtil.range_random_choose_one(1,10);
+
+        tout_ = 0
+
+        if st > 8:
+            tout_ = 1
+
         line = tmp_line.substitute(
             cid = 1,
             invoker=HelpUtil.random_choose_one(_invoker),
@@ -25,6 +32,7 @@ def emit(time_list):
 
             gid=uuid.uuid1(),
             rt=HelpUtil.range_random_choose_one(200,5000),
+            tout = tout_,
 
             etime=item
         )
@@ -40,8 +48,10 @@ if __name__ == '__main__':
     end_hour = 23 #max = 23
     #模拟多少条数据
     num_emit = 1
+    #1顺序模式或者2随机模式
+    mode=1
 
-    time_list = HelpUtil.random_sort_time_series(year,month,day,start_hour,end_hour,num_emit)
+    time_list = HelpUtil.random_sort_time_series(year,month,day,start_hour,end_hour,num_emit,mode)
     
     emit(time_list)
 

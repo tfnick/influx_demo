@@ -34,8 +34,10 @@ if __name__ == '__main__':
     end_hour = 23 #max = 23
     #模拟多少条数据
     num_emit = 1
+    #1顺序模式或者2随机模式
+    mode=1
 
-    time_list = HelpUtil.random_sort_time_series(year,month,day,start_hour,end_hour,num_emit)
+    time_list = HelpUtil.random_sort_time_series(year,month,day,start_hour,end_hour,num_emit,mode)
     
     emit(time_list)
 
