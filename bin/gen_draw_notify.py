@@ -3,6 +3,7 @@
 from string import Template
 from help import HelpUtil
 import uuid
+import time
 
 # 模拟生成提现结果通知，日志符合influxdb line-protocal format
 def emit(time_list):
@@ -45,12 +46,18 @@ if __name__ == '__main__':
     start_hour = 0
     end_hour = 23 #max = 23
     #模拟多少条数据
-    num_emit = 1
+    num_emit = 1000
     #1顺序模式或者2随机模式
     mode=1
 
-    time_list = HelpUtil.random_sort_time_series(year,month,day,start_hour,end_hour,num_emit,mode)
-    
-    emit(time_list)
+
+    if mode == 1:
+        for i in range(num_emit):
+            time_list = HelpUtil.random_sort_time_series(year,month,day,start_hour,end_hour,1)
+            emit(time_list)
+            time.sleep(1)
+    else:
+        time_list = HelpUtil.random_sort_time_series(year,month,day,start_hour,end_hour,num_emit)
+        emit(time_list)
 
     print('done')

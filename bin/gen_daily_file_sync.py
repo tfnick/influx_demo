@@ -2,6 +2,7 @@
 #!/usr/bin/python
 from string import Template
 from help import HelpUtil
+import time
 
 # 模拟生成日终任务执行状态日志，日志符合influxdb line-protocal format
 def emit(time_list):
@@ -37,8 +38,15 @@ if __name__ == '__main__':
     #1顺序模式或者2随机模式
     mode=1
 
-    time_list = HelpUtil.random_sort_time_series(year,month,day,start_hour,end_hour,num_emit,mode)
+    if mode == 1:
+        for i in range(num_emit):
+            time_list = HelpUtil.random_sort_time_series(year,month,day,start_hour,end_hour,1)
+            emit(time_list)
+            time.sleep(1)
+    else:
+        time_list = HelpUtil.random_sort_time_series(year,month,day,start_hour,end_hour,num_emit)
+        emit(time_list)
     
-    emit(time_list)
+    
 
     print('done')
