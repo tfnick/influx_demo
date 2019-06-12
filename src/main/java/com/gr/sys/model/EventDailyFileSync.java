@@ -1,10 +1,8 @@
-package com.gr.sys.contoller;
+package com.gr.sys.model;
 
 import com.gr.sys.utils.LineProtocalUtils;
 import java.util.Date;
 import java.util.LinkedHashMap;
-import lombok.Data;
-
 
 
 /**

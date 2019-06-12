@@ -1,4 +1,4 @@
-package com.gr.sys.contoller;
+package com.gr.sys.model;
 
 import com.gr.sys.utils.LineProtocalUtils;
 

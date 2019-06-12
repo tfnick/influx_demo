@@ -29,14 +29,15 @@
         <file>${log.base}/gr_app/m_daily_file_sync.log</file>
         <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
             <!-- rollover daily -->
-            <fileNamePattern>m_daily_file_sync.log.%i</fileNamePattern>
+            <fileNamePattern>m_daily_file_sync.%i.log.%d{yyyyMMdd}</fileNamePattern>
             <!-- each file should be at most 1MB, keep 20 days worth of history, but at most 20GB -->
             <maxFileSize>1MB</maxFileSize>
             <maxHistory>20</maxHistory>
             <totalSizeCap>20GB</totalSizeCap>
         </rollingPolicy>
-        <encoder>
+        <encoder charset="UTF-8">
             <pattern>%msg%n</pattern>
+            <outputPatternAsHeader>false</outputPatternAsHeader>
         </encoder>
     </appender>
 

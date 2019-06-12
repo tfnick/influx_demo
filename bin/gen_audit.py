@@ -19,7 +19,7 @@ def emit(time_list):
         ##???[0]
         tmp_advice = HelpUtil.random_choose_one(_advice),
         accept_ = 0
-        if tmp_advice[0] == 'A':
+        if tmp_advice[0] == 'accept':
             accept_ = 1
         line = tmp_line.substitute(
             cid = 1,

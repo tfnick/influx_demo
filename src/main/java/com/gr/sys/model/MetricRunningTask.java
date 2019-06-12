@@ -1,5 +1,6 @@
-package com.gr.sys.contoller;
+package com.gr.sys.model;
 
+import com.gr.sys.model.LineProtocolConvert;
 import lombok.Data;
 
 import java.util.Date;

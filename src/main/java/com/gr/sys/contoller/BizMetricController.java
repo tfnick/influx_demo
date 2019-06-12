@@ -1,5 +1,7 @@
 package com.gr.sys.contoller;
 
+import com.gr.sys.model.EventDailyFileSync;
+import com.gr.sys.model.MetricRunningTask;
 import org.apache.commons.lang3.RandomUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -50,7 +52,9 @@ public class BizMetricController {
 
         metric.setFile_num(5);
 
-        metric.setTask_status("1");// 1 完成 0 全部失败 2 部分失败
+        metric.setTask_status("2");
+
+        metric.setRt(50000);
 
         logger.info(metric.toLineProtocol());
 
