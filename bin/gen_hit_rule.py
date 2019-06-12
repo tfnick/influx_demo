@@ -9,7 +9,7 @@ import time
 def emit(time_list):
 
     _etype = ['NEW_APPLY','DRAW']
-    _advice = ['A','B']
+    _advice = ['accept','reject']
     _rule_set = ['rs1','rs2','rs3','rs3','rs3','rs4','rs5','rs6']
     _rule = ['r1','r2','r3','r4','r5','r6','r7','r8','r9','r9']
 

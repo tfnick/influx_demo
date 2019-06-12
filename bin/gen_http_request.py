@@ -12,10 +12,12 @@ def emit(time_list):
     _invoker = ['approve','engine','entry']
     _code = [200,200,200,200,200,200,200,200,198,500,302]
     _http_sts = [200,200,200,200,200,200,200,200,500,400,404]
+    # 请求处理过程是否出现异常，包括IOException，ParseException,ConnectionTimeOut等等
+    _exe = [0,0,0,0,0,0,0,0,0,1]
 
     for item in time_list:
         
-        tmp_line = Template("m_http_service,cid=${cid},invoker=${invoker},url=${url},code=${code},http_sts=${http_sts} gid=\"${gid}\",rt=${rt},tout=${tout} ${etime}")
+        tmp_line = Template("m_http_service,cid=${cid},invoker=${invoker},url=${url},code=${code},http_sts=${http_sts} gid=\"${gid}\",rt=${rt},tout=${tout},exe=${exe} ${etime}")
         
         st = HelpUtil.range_random_choose_one(1,10);
 
@@ -34,6 +36,7 @@ def emit(time_list):
             gid=uuid.uuid1(),
             rt=HelpUtil.range_random_choose_one(200,5000),
             tout = tout_,
+            exe = HelpUtil.random_choose_one(_exe),
 
             etime=item
         )

@@ -14,14 +14,29 @@
         </encoder>
     </appender>
 
+<!--    <appender name="daily_task" class="ch.qos.logback.core.rolling.RollingFileAppender">-->
+<!--        <file>${log.base}/gr_app/m_daily_file_sync.log</file>-->
+<!--        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">-->
+<!--            <fileNamePattern>${log.base}/gr_app/m_daily_file_sync.log.%d{yyyyMMdd}</fileNamePattern>-->
+<!--        </rollingPolicy>-->
+<!--        <encoder charset="UTF-8">-->
+<!--            <pattern>%msg%n</pattern>-->
+<!--            <outputPatternAsHeader>false</outputPatternAsHeader>-->
+<!--        </encoder>-->
+<!--    </appender>-->
+
     <appender name="daily_task" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <file>${log.base}/${app.name}/metrics/${app.name}.daily_task.log</file>
-        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <fileNamePattern>${log.base}/${app.name}/metrics/${app.name}.daily_task.log.%d{yyyyMMdd}</fileNamePattern>
+        <file>${log.base}/gr_app/m_daily_file_sync.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <!-- rollover daily -->
+            <fileNamePattern>m_daily_file_sync.log.%i</fileNamePattern>
+            <!-- each file should be at most 1MB, keep 20 days worth of history, but at most 20GB -->
+            <maxFileSize>1MB</maxFileSize>
+            <maxHistory>20</maxHistory>
+            <totalSizeCap>20GB</totalSizeCap>
         </rollingPolicy>
-        <encoder charset="UTF-8">
+        <encoder>
             <pattern>%msg%n</pattern>
-            <outputPatternAsHeader>false</outputPatternAsHeader>
         </encoder>
     </appender>
 

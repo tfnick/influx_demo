@@ -8,7 +8,6 @@ import time
 # 模拟生成提现结果通知，日志符合influxdb line-protocal format
 def emit(time_list):
 
-    _etype = ['DRAW']
     _draw_sts = ['01','03']
     _real_money = [1000,3000,8000]
 
@@ -25,7 +24,6 @@ def emit(time_list):
         line = tmp_line.substitute(
             cid = 1,
             prod_code='p1',
-            etype = HelpUtil.random_choose_one(_etype),
             draw_sts=draw_sts_[0],
 
             seq_num = uuid.uuid1(),

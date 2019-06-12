@@ -10,12 +10,13 @@ public class EventDrawNotify implements LineProtocolConvert{
     //tag
     String cid;
     String prod_code;
-    String etype;
-    String seq_num;
+    String draw_sts;// 放款结果状态标志 01 03
     //field
+    String seq_num;
     String uid;//md5 of idcard
     Double real_money;// 实际提款金额
-    String draw_sts;// 放款结果状态标志 01 03
+    Integer accept;//1 or 0
+    Integer num = 1;//固定为1，方便在kapacitor中统计通过率，后期切换到flux引擎可以免去这个字段
 
     Date time;
 
@@ -27,14 +28,15 @@ public class EventDrawNotify implements LineProtocolConvert{
 
         tagKvs.put("cid", cid);
         tagKvs.put("prod_code", prod_code);
-        tagKvs.put("etype", etype);
-        tagKvs.put("seq_num", seq_num);
+        tagKvs.put("draw_sts", draw_sts);
 
         LinkedHashMap<String, Object> fieldKvs = new LinkedHashMap<>();
 
         fieldKvs.put("uid", this.uid);
         fieldKvs.put("real_money", this.real_money);
-        fieldKvs.put("draw_sts", this.draw_sts);
+        fieldKvs.put("seq_num", this.seq_num);
+        fieldKvs.put("accept", "01".equals(this.draw_sts) ? 1 : 0);
+        fieldKvs.put("num", 1);
 
         return LineProtocalUtils.build(measurement, tagKvs, fieldKvs, this.time);
     }
@@ -53,14 +55,6 @@ public class EventDrawNotify implements LineProtocolConvert{
 
     public void setProd_code(String prod_code) {
         this.prod_code = prod_code;
-    }
-
-    public String getEtype() {
-        return etype;
-    }
-
-    public void setEtype(String etype) {
-        this.etype = etype;
     }
 
     public String getSeq_num() {
@@ -101,5 +95,21 @@ public class EventDrawNotify implements LineProtocolConvert{
 
     public void setTime(Date time) {
         this.time = time;
+    }
+
+    public Integer getAccept() {
+        return accept;
+    }
+
+    public void setAccept(Integer accept) {
+        this.accept = accept;
+    }
+
+    public Integer getNum() {
+        return num;
+    }
+
+    public void setNum(Integer num) {
+        this.num = num;
     }
 }

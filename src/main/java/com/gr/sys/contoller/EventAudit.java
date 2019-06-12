@@ -11,12 +11,13 @@ public class EventAudit implements LineProtocolConvert{
     String cid;
     String prod_code;
     String etype; // apply or draw
-    String seq_num;
+    String advice;// A or B
     //field
-    String sn;
     String uid;//md5 of idcard
     Double money; //建议额度或者建议提现金额
-    String advice;// A or B
+    String seq_num;
+    Integer accept;//1 or 0
+    Integer num = 1;//固定为1，方便在kapacitor中统计通过率，后期切换到flux引擎可以免去这个字段
 
     Date time;
 
@@ -29,14 +30,16 @@ public class EventAudit implements LineProtocolConvert{
         tagKvs.put("cid", cid);
         tagKvs.put("prod_code", prod_code);
         tagKvs.put("etype", etype);
-        tagKvs.put("seq_num", seq_num);
+        tagKvs.put("advice", this.advice);
 
         LinkedHashMap<String, Object> fieldKvs = new LinkedHashMap<>();
 
-        fieldKvs.put("sn", this.sn);
+
         fieldKvs.put("uid", this.uid);
         fieldKvs.put("money", this.money);
-        fieldKvs.put("advice", this.advice);
+        fieldKvs.put("seq_num", seq_num);
+        fieldKvs.put("accept", "accept".equals(this.advice) ? 1 : 0);
+        fieldKvs.put("num", 1);
 
         return LineProtocalUtils.build(measurement, tagKvs, fieldKvs, this.time);
     }
@@ -73,12 +76,20 @@ public class EventAudit implements LineProtocolConvert{
         this.seq_num = seq_num;
     }
 
-    public String getSn() {
-        return sn;
+    public Integer getAccept() {
+        return accept;
     }
 
-    public void setSn(String sn) {
-        this.sn = sn;
+    public void setAccept(Integer accept) {
+        this.accept = accept;
+    }
+
+    public Integer getNum() {
+        return num;
+    }
+
+    public void setNum(Integer num) {
+        this.num = num;
     }
 
     public String getUid() {

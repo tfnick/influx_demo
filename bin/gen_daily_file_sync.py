@@ -8,7 +8,8 @@ import time
 def emit(time_list):
 
     _task_name = ['zy_daily_sync','zhonghui_daily_sync']
-    _task_status = ['0','1','2']
+    #1：处理中,2 部分失败,3：成功,4:失败
+    _task_status = ['2','3','4']
 
     for item in time_list:
         

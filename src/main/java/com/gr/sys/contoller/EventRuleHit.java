@@ -11,10 +11,12 @@ public class EventRuleHit implements LineProtocolConvert{
     String cid;
     String prod_code;
     String etype;
-    String seq_num;
-    //field
     String rule_set;
     String rule;
+
+    //field
+    String seq_num;
+    Integer hit;//是否命中 1 是 0 否
 
     Date time;
 
@@ -29,12 +31,13 @@ public class EventRuleHit implements LineProtocolConvert{
         tagKvs.put("cid", cid);
         tagKvs.put("prod_code", prod_code);
         tagKvs.put("etype", etype);
-        tagKvs.put("seq_num", seq_num);
+        tagKvs.put("rule_set", this.rule_set);
+        tagKvs.put("rule", this.rule);
 
         LinkedHashMap<String, Object> fieldKvs = new LinkedHashMap<>();
 
-        fieldKvs.put("rule_set", this.rule_set);
-        fieldKvs.put("rule", this.rule);
+        fieldKvs.put("seq_num", seq_num);
+        fieldKvs.put("hit", hit);
 
         return LineProtocalUtils.build(measurement, tagKvs, fieldKvs, this.time);
     }
@@ -93,5 +96,13 @@ public class EventRuleHit implements LineProtocolConvert{
 
     public void setEtype(String etype) {
         this.etype = etype;
+    }
+
+    public Integer getHit() {
+        return hit;
+    }
+
+    public void setHit(Integer hit) {
+        this.hit = hit;
     }
 }

@@ -9,7 +9,7 @@ import time
 def emit(time_list):
 
     _etype = ['NEW_APPLY','DRAW']
-    _advice = ['A','B']
+    _advice = ['accept','reject']
     _money = [1000,3000,8000]
 
     for item in time_list:
